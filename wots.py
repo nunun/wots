@@ -111,14 +111,14 @@ def count(dict, win):
 	dict["total"] += 1
 
 # 表示
-def disp(title, dict, indent = 0, indent_str = "    "):
-	print(indent_str * indent + title + ":")
+def disp(title, dict, indent = 0, indent_str = "    ", marker = "* "):
+	print(indent_str * indent + marker + title + ":")
 	if "win" in dict and "lose" in dict and "total" in dict:
 		win   = dict["win"]
 		lose  = dict["lose"]
 		total = dict["total"]
 		wr    = win / total * 100.0
-		print("{0}勝率 {1:3.1f}% (win:{2:2d}, lose:{3:2d}, total:{4:2d})".format(indent_str * (indent + 1), wr, win, lose, total))
+		print("{0}{1}勝率 {2:3.1f}% (win:{3:2d}, lose:{4:2d}, total:{5:2d})".format(indent_str * (indent + 1), marker, wr, win, lose, total))
 	else:
 		items = sorted(dict.items(), key=lambda x: x[1]["total"] if "total" in x[1] else x[0])
 		items.reverse()
